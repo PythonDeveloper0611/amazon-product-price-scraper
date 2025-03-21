@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI WEB SCRAPER</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>AI WEB SCRAPER</h1>
+        <form method="POST">
+            <div class="input-group">
+                <label for="url">Enter URL:</label>
+                <input type="text" id="url" name="url" required>
+            </div>
+            <button type="submit">Scrape</button>
+        </form>
+        {% if data %}
+        <h2>Scraped Data</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>PRODUCT NAME</th>
+                    <th>PRICE</th>
+                    <th>MANUFACTURER</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row['name'] }}</td>
+                    <td>{{ row['price'] }}</td>
+                    <td>{{ row['manufacturer'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
